@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 best.onnx
+best.pt
 # C extensions
 *.so
 

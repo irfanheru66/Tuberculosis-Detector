@@ -2,17 +2,15 @@ import streamlit as st
 from PIL import Image
 from detection import process
 import numpy as np
-# Page settings
 st.set_page_config(
     page_title="Image Detection",
     layout="wide",
     initial_sidebar_state="expanded"
  )
 
-# Title
 st.title('Tuberculosis Detection from sputum sample')
+st.markdown("# inference using onnx")
 
-# Upload file
 uploaded_file = st.file_uploader(label="Choose a file", type=['jpg', 'jpeg','png'])
 
 sidebar = st.sidebar
