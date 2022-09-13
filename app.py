@@ -1,3 +1,4 @@
+from typing_extensions import runtime
 import streamlit as st
 from PIL import Image
 from detection import process
@@ -27,6 +28,7 @@ if uploaded_file is not None:
        
     with col2:
         st.markdown('<p style="text-align: center;">Detected Image</p>', unsafe_allow_html=True)
-        image_arr,total =  process(np.array(image))
+        image_arr,total,runtime =  process(np.array(image))
         st.image(Image.fromarray(image_arr),caption="Tuberculosis detected")
         st.markdown(f'<p style="text-align: center;">Bacteria detected : {total}</p>', unsafe_allow_html=True)
+        st.markdown(f'<p style="text-align: center;">{runtime}</p>', unsafe_allow_html=True)

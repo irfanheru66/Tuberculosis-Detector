@@ -36,10 +36,10 @@ if uploaded_file is not None:
 
     with col2:
         st.markdown('<p style="text-align: center;">Detected Image</p>', unsafe_allow_html=True)
-        img,total = process(imgpath,conf_level,IoU)
+        img,total,runtime = process(imgpath,conf_level,IoU)
         st.image(img,caption="Tuberculosis detected")
         st.markdown(f'<p style="text-align: center;">Bacteria detected : {total}</p>', unsafe_allow_html=True)
-
+        st.markdown(f'<p style="text-align: center;">{runtime}</p>', unsafe_allow_html=True)
 
        
     # with col2:
