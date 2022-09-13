@@ -8,7 +8,7 @@ Inference using torch hub and onnx
   <img src="ReadmeAssests/Result.png" width="300" /> 
 </p>
 
-# To load the weight use Gdown to download the .pth
+# To load the weight use Gdown to download the .pt and .onnx
 ```
 pip3 install gdown
 #onnx
