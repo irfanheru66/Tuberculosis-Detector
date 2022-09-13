@@ -9,7 +9,6 @@ from pathlib import Path
 from collections import OrderedDict,namedtuple
 
 def boundingbox(img,dwdh,ratio,outputs):
-    since = time.time()
     ori_images = [img.copy()]
 
     for i,(batch_id,x0,y0,x1,y1,cls_id,score) in enumerate(outputs):
@@ -25,7 +24,7 @@ def boundingbox(img,dwdh,ratio,outputs):
         name += ' '+str(score)
         cv2.rectangle(image,box[:2],box[2:],color,2)
         cv2.putText(image,name,(box[0], box[1] - 2),cv2.FONT_HERSHEY_SIMPLEX,0.75,[225, 255, 255],thickness=2)
-    return cv2.cvtColor(ori_images[0], cv2.COLOR_BGR2RGB),f'Inference complete { (time.time()-since)*1000:.5f}ms'
+    return cv2.cvtColor(ori_images[0], cv2.COLOR_BGR2RGB)
 
 def letterbox(im, new_shape=(1632,1248), color=(114, 114, 114), auto=True, scaleup=True, stride=32):
     # Resize and pad image while meeting stride-multiple constraints
@@ -78,7 +77,10 @@ def process(img):
 
     inp = {inname[0]:im}
 
+    since = time.time()
     outputs = session.run(outname, inp)[0]
-    img,runtime = boundingbox(img,dwdh,ratio,outputs)
-    print(runtime)
+    img = boundingbox(img,dwdh,ratio,outputs)
+    runtime = f'Total Inference time { (time.time()-since)*1000:.2f}ms'
+
+
     return img,len(outputs),runtime
