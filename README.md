@@ -4,8 +4,8 @@
 This program receive an Suptum Sample image with 1632 x 1224 
 Inference using torch hub and onnx
 <p float="left"> 
-  <img src="ReadmeAssets/input.jpg" width="300" />
-  <img src="ReadmeAssets/Result.png" width="300" /> 
+  <img src="ReadmeAssests/input.jpg" width="300" />
+  <img src="ReadmeAssests/Result.png" width="300" /> 
 </p>
 
 # To load the weight use Gdown to download the .pth
